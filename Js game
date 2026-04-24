@@ -1,0 +1,169 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <title>JS Game</title>
+  </head>
+  <body>
+    <div class="content">
+      <h2 class="content__title">Rock Paper Scissors</h2>
+      
+      <div class="wrapper">
+        <div class="wrapper__element">
+            <img class="first__player" src="./img/paper.png" alt="">
+            <p class="player">1-player</p>
+        </div>
+        <div class="wrapper__element">
+            <img class="second__player" src="./img/paper.png" alt="">
+            <p class="player">2-player</p>
+        </div>
+      </div>
+
+      <button class="btn">start</button>
+      <p class="result">You won!</p>
+
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
+
+
+
+
+
+// Kerakli html tag lariga ulanish
+const first_player_img = document.querySelector(".first__player");
+const second_player_img = document.querySelector(".second__player");
+const result = document.querySelector(".result");
+const btn = document.querySelector(".btn");
+
+btn.addEventListener("click", () => {
+  // Tasodifiy sonlarni generatsiya qilish
+  const first_random_number = Math.round(Math.random() * 2);
+  const second_random_number = Math.round(Math.random() * 2);
+
+  // Birinchi o'yinchi uchun rasm chiqarish
+  if (first_random_number == 0) {
+    first_player_img.setAttribute("src", "./img/paper.png");
+  } else if (first_random_number == 1) {
+    first_player_img.setAttribute("src", "./img/rock.png");
+  } else {
+    first_player_img.setAttribute("src", "./img/scissors.png");
+  }
+  // ikkinchi o'yinchi uchun tasodifiy rasm chiqarish
+  if (second_random_number == 0) {
+    second_player_img.setAttribute("src", "./img/paper.png");
+  } else if (second_random_number == 1) {
+    second_player_img.setAttribute("src", "./img/rock.png");
+  } else {
+    second_player_img.setAttribute("src", "./img/scissors.png");
+  }
+
+  // 0 - paper
+  // 1 - rock
+  // 2 - scissors
+
+  if(first_random_number == 0 && second_random_number == 1 ) {
+    result.textContent='Siz yutdingiz!'
+  } else if(first_random_number == 1 && second_random_number == 2) {
+    result.textContent = 'Siz yutdingiz!'
+  } else if(first_random_number == 2 && second_random_number == 0) {
+    result.textContent = 'Siz yutdingiz!'
+  } else if(first_random_number == second_random_number) {
+    result.textContent = 'Durrang!'
+  } else {
+    result.textContent('Siz yutqazdingiz!')
+  }
+});
+
+
+
+
+
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    list-style: none;
+    text-decoration: none;
+}
+
+body {
+    background-color: antiquewhite;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: system-ui, sans-serif;
+}
+
+.content {
+    background-color: #fff;
+    width: 750px;
+    padding: 30px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.content__title {
+    font-size: 30px;
+    line-height: 120%;
+}
+
+.wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    margin: 30px 0;
+}
+
+.wrapper__element {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.wrapper__element > img {
+    width: 250px;
+    height: 200px;
+    object-fit: contain;
+}
+
+.player {
+    font-size: 20px;
+    color: blueviolet;
+    text-transform: uppercase;
+    font-weight: 600;
+}
+
+.btn {
+    width: 50%;
+    padding: 10px 15px;
+    background-color: blueviolet;
+    color: #fff;
+    font-size: 20px;
+    line-height: 120%;
+    font-weight: 700;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 5px;
+}
+
+.result {
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 120%;
+    font-weight: 700;
+}
